@@ -10,11 +10,6 @@ import com.movileseller.movileapp.layer.business.dto.impl.PhoneDTO;
 import com.movileseller.movileapp.layer.persistence.managers.interfaces.CompoundedEntityManager;
 import com.movileseller.movileapp.layer.persistence.managers.interfaces.SimpleEntityManager;
 
-/**
- * 
- * @author EXCC0100
- *
- */
 @Component
 public class PersistenceFacade {
 
@@ -34,24 +29,11 @@ public class PersistenceFacade {
         return orderPersistenceManager;
     }
 
-    public void setOrderPersistenceManager(CompoundedEntityManager<OrderDTO> orderPersistenceManager) {
-        this.orderPersistenceManager = orderPersistenceManager;
-    }
-
     public SimpleEntityManager<CustomerDTO> getCustomerPersistenceManager() {
         return customerPersistenceManager;
-    }
-
-    public void setCustomerPersistenceManager(SimpleEntityManager<CustomerDTO> customerPersistenceManager) {
-        this.customerPersistenceManager = customerPersistenceManager;
     }
 
     public SimpleEntityManager<PhoneDTO> getPhonePersistenceManager() {
         return phonePersistenceManager;
     }
-
-    public void setPhonePersistenceManager(SimpleEntityManager<PhoneDTO> phonePersistenceManager) {
-        this.phonePersistenceManager = phonePersistenceManager;
-    }
-    
 }
