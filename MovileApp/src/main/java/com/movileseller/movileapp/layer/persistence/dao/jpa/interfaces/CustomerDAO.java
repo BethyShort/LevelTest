@@ -4,16 +4,48 @@ import java.util.List;
 
 import com.movileseller.movileapp.layer.data.entities.jpa.Customer;
 
+/**
+ * 
+ * @author EXCC0100
+ *
+ */
 public interface CustomerDAO {
-    public Customer findOne(Object id);
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Customer findOne(Object id);
 
-    public List<Customer> findAll();
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Customer> findAll();
 
-    public void create(Customer entity);
+	/**
+	 * 
+	 * @param entity
+	 */
+	public void create(Customer entity);
 
-    public Customer update(Customer entity);
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 */
+	public Customer update(Customer entity);
 
-    public void delete(Customer entity);
+	/**
+	 * 
+	 * @param entity
+	 */
+	public void delete(Customer entity);
 
-    public void deleteById(Object id);
+	/**
+	 * 
+	 * @param id
+	 */
+	public void deleteById(Object id);
 }

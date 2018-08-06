@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 import com.movileseller.movileapp.layer.business.dto.impl.PhoneDTO;
 import com.movileseller.movileapp.layer.persistence.PersistenceFacade;
 
+/**
+ * 
+ * @author EXCC0100
+ *
+ */
 @Component
 public class PhoneCatalogBusinessManager {
 

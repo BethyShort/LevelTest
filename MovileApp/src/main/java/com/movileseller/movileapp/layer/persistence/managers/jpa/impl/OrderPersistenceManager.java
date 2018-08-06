@@ -5,16 +5,23 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import com.movileseller.movileapp.layer.business.dto.impl.OrderDTO;
-import com.movileseller.movileapp.layer.business.dto.impl.PhoneDTO;
 import com.movileseller.movileapp.layer.data.entities.jpa.Order;
 import com.movileseller.movileapp.layer.data.entities.jpa.OrderPK;
 import com.movileseller.movileapp.layer.persistence.dao.interfaces.CompoundDataAccessObject;
 import com.movileseller.movileapp.layer.persistence.managers.interfaces.CompoundedEntityManager;
 
+/**
+ * 
+ * @author EXCC0100
+ *
+ */
 @Component(value="orderPersistenceManager")
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO> {
 
 
@@ -22,6 +29,7 @@ public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO
     @Qualifier("orderJpaDAO")
     private CompoundDataAccessObject<Order> orderDao; 
     
+	@Override
     public List<OrderDTO> findByFilter(OrderDTO dto) {
         List <OrderDTO> resultList=new ArrayList<OrderDTO>();
         Order order=new Order();
@@ -31,6 +39,7 @@ public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO
         return resultList;
     }
     
+	@Override
     public List<OrderDTO> findAll() {
         List <OrderDTO> resultList=new ArrayList<OrderDTO>();
         List<Order> list=orderDao.findAll();
@@ -38,6 +47,7 @@ public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO
         return resultList;
     }
     
+	@Override
     public void create(OrderDTO dto) {
         List<Order> orderList= dtoToEntity(dto);
         
@@ -45,6 +55,7 @@ public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO
             orderDao.create(order);
     }
 
+	@Override
     public void update(OrderDTO dto) {
         List<Order> orderList= dtoToEntity(dto);
         
@@ -52,6 +63,7 @@ public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO
             orderDao.update(order);
     }
 
+	@Override
     public void delete(OrderDTO dto) {
         List<Order> orderList= dtoToEntity(dto);
         
@@ -59,6 +71,7 @@ public class OrderPersistenceManager implements CompoundedEntityManager<OrderDTO
             orderDao.delete(order);
     }
 
+	@Override
     public void deleteByFilter(OrderDTO dto) {
         List<Order> orderList= dtoToEntity(dto);
         

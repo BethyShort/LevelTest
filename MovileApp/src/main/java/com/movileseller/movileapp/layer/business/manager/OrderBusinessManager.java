@@ -10,12 +10,22 @@ import com.movileseller.movileapp.layer.business.dto.impl.OrderDTO;
 import com.movileseller.movileapp.layer.business.dto.impl.PhoneDTO;
 import com.movileseller.movileapp.layer.persistence.PersistenceFacade;
 
+/**
+ * 
+ * @author EXCC0100
+ *
+ */
 @Component
 public class OrderBusinessManager {
 
     @Autowired
     private PersistenceFacade facade;
     
+    /**
+     * 
+     * @param order
+     * @return
+     */
     public BigDecimal getOrderPrice(OrderDTO order) {
         BigDecimal orderPrice=calculateOrderPrice(order.getCustomerBuyedPhones());
         order.setOrderPrice(orderPrice);

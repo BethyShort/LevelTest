@@ -5,26 +5,36 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import com.movileseller.movileapp.layer.business.dto.impl.PhoneDTO;
 import com.movileseller.movileapp.layer.data.entities.jpa.Phone;
-import com.movileseller.movileapp.layer.persistence.dao.interfaces.SimleDataAccessObject;
+import com.movileseller.movileapp.layer.persistence.dao.interfaces.SimpleDataAccessObject;
 import com.movileseller.movileapp.layer.persistence.managers.interfaces.SimpleEntityManager;
 
+/**
+ * 
+ * @author EXCC0100
+ *
+ */
 @Component(value="phonePersistenceManager")
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PhonePersistenceManager implements SimpleEntityManager<PhoneDTO> {
 
     @Autowired
     @Qualifier("phoneJpaDAO")
-    private SimleDataAccessObject<Phone> phoneDao; 
+    private SimpleDataAccessObject<Phone> phoneDao; 
     
+    @Override
     public PhoneDTO findOne(PhoneDTO dto) {
         Phone entity= dtoToEntity(dto);
         entity=phoneDao.findOne(entity.getIdphone());
         return entityToDto(entity);
     }
-
+    
+    @Override
     public List<PhoneDTO> findAll() {
         List <PhoneDTO> resultList=new ArrayList<PhoneDTO>();
         List<Phone> list=phoneDao.findAll();
@@ -34,16 +44,19 @@ public class PhonePersistenceManager implements SimpleEntityManager<PhoneDTO> {
         return resultList;
     }
 
+    @Override
     public void create(PhoneDTO dto) {
         Phone entity= dtoToEntity(dto);
         phoneDao.create(entity);
     }
 
+    @Override
     public void update(PhoneDTO dto) {
         Phone entity= dtoToEntity(dto);
         phoneDao.update(entity);
     }
 
+    @Override
     public void delete(PhoneDTO dto) {
         Phone entity= dtoToEntity(dto);
         phoneDao.delete(entity);

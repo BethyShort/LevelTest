@@ -10,6 +10,11 @@ import com.movileseller.movileapp.layer.business.dto.impl.PhoneDTO;
 import com.movileseller.movileapp.layer.persistence.managers.interfaces.CompoundedEntityManager;
 import com.movileseller.movileapp.layer.persistence.managers.interfaces.SimpleEntityManager;
 
+/**
+ * 
+ * @author EXCC0100
+ *
+ */
 @Component
 public class PersistenceFacade {
 
