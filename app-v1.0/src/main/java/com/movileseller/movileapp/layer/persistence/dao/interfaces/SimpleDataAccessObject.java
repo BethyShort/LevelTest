@@ -1,0 +1,51 @@
+package com.movileseller.movileapp.layer.persistence.dao.interfaces;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * 
+ * @author EXCC0100
+ *
+ * @param <T>
+ */
+public interface SimpleDataAccessObject<T extends Serializable> {
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+    public T findOne(Object id);
+
+    /**
+     * 
+     * @return
+     */
+    public List<T> findAll();
+
+    /**
+     * 
+     * @param entity
+     */
+    public void create(T entity);
+
+    /**
+     * 
+     * @param entity
+     * @return
+     */
+    public T update(T entity);
+
+    /**
+     * 
+     * @param entity
+     */
+    public void delete(T entity);
+
+    /**
+     * 
+     * @param entityId
+     */
+    public void deleteById(Object entityId);
+}
